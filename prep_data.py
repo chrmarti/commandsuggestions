@@ -1,7 +1,7 @@
 import gzip
 import csv
 import numpy as np
-# from scipy.sparse import lil_matrix, save_npz
+from scipy.sparse import lil_matrix, save_npz
 import time
 
 start = time.time()
@@ -32,8 +32,8 @@ print('maxCount', maxCount)
 print('dims', (len(machines), len(commands)))
 print('first run', time.time() - start)
 
-# X = lil_matrix((len(machines), len(commands)), dtype=np.int32)
-X = np.zeros((len(machines), len(commands)), dtype=np.int32)
+X = lil_matrix((len(machines), len(commands)), dtype=np.int32)
+# X = np.zeros((len(machines), len(commands)), dtype=np.int32)
 for line in lines:
 	machine = line[2]
 	command = line[1]
@@ -50,6 +50,7 @@ joblib.dump(machines, 'data/machines.pickle')
 print('machines saved', time.time() - start)
 joblib.dump(commands, 'data/commands.pickle')
 print('commands saved', time.time() - start)
-# save_npz('data/data.npz', X)
-np.savez_compressed('data/data.npz', X=X)
+csr = X.tocsr()
+save_npz('data/data.npz', csr)
+# np.savez_compressed('data/data.npz', X=X)
 print('data saved', time.time() - start)
