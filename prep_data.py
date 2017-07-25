@@ -51,9 +51,9 @@ if not os.path.exists('data'):
 	os.makedirs('data')
 
 from sklearn.externals import joblib
-joblib.dump(machines, 'data/machines.pickle')
+joblib.dump(machines, 'data/machines.pickle', compress=True)
 print('machines saved', time.time() - start)
-joblib.dump(commands, 'data/commands.pickle')
+joblib.dump(commands, 'data/commands.pickle', compress=True)
 print('commands saved', time.time() - start)
 csr = X.tocsr()
 save_npz('data/data.npz', csr)
