@@ -1,21 +1,7 @@
-## Connect to docker daemon (every new shell)
+## Command Suggestions for VSCode
 
-```
-eval $(docker-machine env vscode-commandsuggestions)
-```
+This service computes command suggestions for VSCode using a Nearest Neighbor approach to search for commands corresponding to the user's usage pattern of commands.
 
-## Deploy
+The command suggestions have been embedded in VSCode's Welcome UX.
 
-```
-docker-compose build
-docker-compose -f docker-compose.yml up -d
-docker-compose logs --tail=100 -f
-```
-
-## Setup up docker-machine (only when recreating Docker VM in Azure)
-
-`--engine-install-url` works around issue with latest version of Docker install.
-
-```
-docker-machine create --driver azure --azure-dns vscode-commandsuggestions --azure-open-port 80 --azure-ssh-user vscode-commandsuggestions --azure-subscription-id <subscription_id> --azure-location westus --azure-resource-group CommandSuggestions --azure-size Standard_A2_v2 --engine-install-url=https://web.archive.org/web/20170623081500/https://get.docker.com vscode-commandsuggestions
-```
+![Command suggestions embedded in VSCode](images/in_action.gif)
