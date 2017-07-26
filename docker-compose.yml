@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+    vscode-commandsuggestions:
+        image: vscode-commandsuggestions:latest
+        build:
+            context: service
+            dockerfile: Dockerfile
+        ports:
+            - 80:5000

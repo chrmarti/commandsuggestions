@@ -23,7 +23,10 @@ print('commands_inv', time.time() - start)
 
 def compute_suggestions(machine_id):
 	if machine_id not in machines:
-		return []
+		return {
+			'n_of_commands': 0,
+			'suggestions': []
+		}
 	
 	machine_index = machines[machine_id]
 	input = X[machine_index]
@@ -71,5 +74,3 @@ else:
 	
 	if __name__ == '__main__':
 		app.run()
-
-# curl http://localhost:5000/command_suggestions?machine_id=ae7bbfbc14df1cb2de192c37f788d7db0ddba3da0906015e8e4b43c8e56a281c

@@ -17,5 +17,5 @@ ENV FLASK_DEBUG=0
 
 CMD ["flask", "run", "--host=0.0.0.0"]
 
-# docker build -t tipoftheday-service .
-# docker run -it --rm -p 5000:5000 tipoftheday-service
+# docker build -t vscode-commandsuggestions .
+# docker run -it --rm -p 5000:5000 vscode-commandsuggestions
